@@ -16,30 +16,47 @@ function CustomTooltip({ active, payload }: any) {
 
 export function UserStatusChart() {
   return (
-    <div className="stat-card flex h-full flex-col space-y-4">
+    <div className="stat-card flex h-full flex-col gap-4">
       <p className="section-title">User Status Distribution</p>
-      <div className="flex-1 min-h-0">
-        <ResponsiveContainer width="100%" height="100%">
-          <PieChart>
-            <Pie data={userStatusData} cx="50%" cy="50%" innerRadius={40} outerRadius={65} paddingAngle={3} dataKey="value">
-              {userStatusData.map((entry, index) => (
-                <Cell key={`cell-${index}`} fill={entry.color} />
-              ))}
-            </Pie>
-            <Tooltip content={<CustomTooltip />} />
-          </PieChart>
-        </ResponsiveContainer>
-      </div>
-      <div className="space-y-1.5">
-        {userStatusData.map((item) => (
-          <div key={item.name} className="flex items-center justify-between text-xs">
-            <div className="flex items-center gap-2">
-              <span className="h-2 w-2 rounded-full" style={{ backgroundColor: item.color }} />
-              <span className="text-muted-foreground">{item.name}</span>
+
+      {/* Fills remaining height — chart centered */}
+      <div className="flex flex-1 flex-col items-center justify-center gap-5 min-h-0">
+
+        {/* Pie chart — fixed size so it always renders */}
+        <div className="h-44 w-44 shrink-0">
+          <ResponsiveContainer width="100%" height="100%">
+            <PieChart>
+              <Pie
+                data={userStatusData}
+                cx="50%"
+                cy="50%"
+                innerRadius={0}
+                outerRadius="80%"
+                paddingAngle={2}
+                dataKey="value"
+              >
+                {userStatusData.map((entry, index) => (
+                  <Cell key={`cell-${index}`} fill={entry.color} />
+                ))}
+              </Pie>
+              <Tooltip content={<CustomTooltip />} />
+            </PieChart>
+          </ResponsiveContainer>
+        </div>
+
+        {/* Legend */}
+        <div className="flex flex-col gap-3">
+          {userStatusData.map((item) => (
+            <div key={item.name} className="flex items-center gap-3">
+              <span
+                className="h-3 w-3 shrink-0 rounded-sm"
+                style={{ backgroundColor: item.color }}
+              />
+              <span className="text-sm text-muted-foreground">{item.name}</span>
             </div>
-            <span className="font-medium text-foreground mono">{item.value}%</span>
-          </div>
-        ))}
+          ))}
+        </div>
+
       </div>
     </div>
   );

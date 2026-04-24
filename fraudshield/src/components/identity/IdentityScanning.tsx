@@ -213,7 +213,6 @@ export function IdentityScanning() {
 
   return (
     <div className="stat-card flex h-full flex-col space-y-4">
-      <p className="section-title">Identity Scanning & Verification</p>
 
       
       <ScanItem

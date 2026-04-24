@@ -15,9 +15,9 @@ function CustomTooltip({ active, payload, label }: any) {
 
 export function VerificationChart() {
   return (
-    <div className="stat-card flex h-full flex-col space-y-4">
+    <div className="stat-card flex flex-1 flex-col gap-4">
       <p className="section-title">Verification Success Rate</p>
-      <div className="flex-1 min-h-0">
+      <div className="flex-1 min-h-[120px]">
         <ResponsiveContainer width="100%" height="100%">
           <AreaChart data={verificationSuccessData} margin={{ top: 5, right: 10, left: -25, bottom: 0 }}>
             <defs>

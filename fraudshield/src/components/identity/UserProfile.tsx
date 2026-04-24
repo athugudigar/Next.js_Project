@@ -12,7 +12,7 @@ export function UserProfile() {
   ];
 
   return (
-    <div className="stat-card flex h-full flex-col space-y-4">
+    <div className="stat-card flex flex-col space-y-4">
       <div className="flex items-center justify-between">
         <p className="section-title mb-0">User Profile Information</p>
         <Button size="sm" variant="outline" className="text-xs border-primary/30 text-primary hover:bg-primary/10">

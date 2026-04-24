@@ -11,30 +11,28 @@ export default function IdentityPage() {
     <DashboardLayout title="Identity Verification & User Dashboard">
       <div className="flex h-full flex-col gap-5">
 
-        
-        <div className="grid grid-cols-1 gap-5 xl:grid-cols-5 items-stretch">
-
-          <div className="xl:col-span-3 flex flex-col gap-5">
-
+        {/* ── Row 1: 3 columns, equal height ── */}
+        <div className="grid grid-cols-1 gap-5 xl:grid-cols-3 items-stretch">
+          <div className="xl:col-span-1 flex flex-col">
             <IdentityScanning />
-
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 flex-1 items-stretch">
-              <UserProfile />
-              <VerificationChart />
-            </div>
-
           </div>
-
-          <div className="xl:col-span-2 flex flex-col gap-5">
+          <div className="xl:col-span-1 flex flex-col gap-5">
+            <UserProfile />
+            <VerificationChart />
+          </div>
+          <div className="xl:col-span-1 flex flex-col">
             <ScanResults />
-            <UserStatusChart />
           </div>
-
         </div>
 
-      
-        <div className="flex-1 min-h-0">
-          <VerificationHistory />
+        {/* ── Row 2: fills remaining page height ── */}
+        <div className="grid flex-1 grid-cols-1 gap-5 xl:grid-cols-3 items-stretch min-h-0">
+          <div className="xl:col-span-2 flex flex-col min-h-0">
+            <VerificationHistory />
+          </div>
+          <div className="xl:col-span-1 flex flex-col min-h-0">
+            <UserStatusChart />
+          </div>
         </div>
 
       </div>
